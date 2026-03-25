@@ -56,8 +56,8 @@ export default function Navbar() {
                 className={cn(
                   "rounded-lg px-3.5 py-1.5 text-[0.8125rem] font-medium tracking-[-0.01em] transition-colors",
                   active
-                    ? "bg-terracotta-500 text-white"
-                    : "text-stone-500 hover:text-charcoal"
+                    ? "border border-charcoal text-charcoal"
+                    : "border border-transparent text-stone-500 hover:text-charcoal"
                 )}
               >
                 {link.label}
