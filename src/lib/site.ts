@@ -64,7 +64,6 @@ export const products: Product[] = [
     description:
       "Draft My Lesson brings the platform to English-speaking teachers with copy and workflows written for those classrooms first.",
     flags: ["gb", "us"],
-    comingSoon: true,
     features: [
       "Lesson plans and classroom materials in English.",
       "Fast generation for weekly prep and one-off lessons.",
