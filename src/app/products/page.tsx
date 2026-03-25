@@ -36,6 +36,7 @@ export default function ProductsPage() {
                 market={product.marketLabel}
                 targetMarket={product.targetMarket}
                 features={product.features}
+                comingSoon={product.comingSoon}
                 ctaLabel={`Visit ${product.name}`}
                 variant="feature"
               />

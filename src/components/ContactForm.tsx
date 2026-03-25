@@ -6,12 +6,14 @@ type FormState = {
   name: string;
   email: string;
   message: string;
+  website: string;
 };
 
 const initialState: FormState = {
   name: "",
   email: "",
   message: "",
+  website: "",
 };
 
 function validate(values: FormState) {
@@ -52,6 +54,7 @@ export default function ContactForm() {
           name: values.name.trim(),
           email: values.email.trim(),
           message: values.message.trim(),
+          website: values.website,
         }),
       });
 
@@ -71,7 +74,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-5">
+    <form onSubmit={handleSubmit} className="relative grid gap-5">
       <div>
         <label htmlFor="name" className="mb-2 block text-sm font-medium text-charcoal">
           Name
@@ -124,6 +127,20 @@ export default function ContactForm() {
           required
           className="textarea-field"
           placeholder="Tell us a little about what you want to discuss."
+        />
+      </div>
+
+      {/* Honeypot */}
+      <div className="absolute -left-[9999px]" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={values.website}
+          onChange={(event) => setValues((current) => ({ ...current, website: event.target.value }))}
         />
       </div>
 

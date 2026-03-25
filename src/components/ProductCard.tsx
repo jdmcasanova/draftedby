@@ -13,6 +13,7 @@ type ProductCardProps = {
   ctaLabel?: string;
   badge?: string;
   features?: string[];
+  comingSoon?: boolean;
   variant?: "compact" | "feature";
   className?: string;
 };
@@ -35,6 +36,7 @@ export default function ProductCard({
   ctaLabel = "Visit site",
   badge,
   features = [],
+  comingSoon = false,
   variant = "compact",
   className = "",
 }: ProductCardProps) {
@@ -78,16 +80,22 @@ export default function ProductCard({
             </div>
           </div>
 
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-terracotta-500 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-terracotta-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta-500"
-            aria-label={`${ctaLabel} in a new tab`}
-          >
-            <span>{ctaLabel}</span>
-            <ExternalArrow />
-          </a>
+          {comingSoon ? (
+            <span className="inline-flex items-center gap-2 rounded-lg bg-stone-200 px-4 py-2.5 text-sm font-medium text-stone-500">
+              Coming soon
+            </span>
+          ) : (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-terracotta-500 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-terracotta-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta-500"
+              aria-label={`${ctaLabel} in a new tab`}
+            >
+              <span>{ctaLabel}</span>
+              <ExternalArrow />
+            </a>
+          )}
         </div>
 
         {variant === "feature" ? (

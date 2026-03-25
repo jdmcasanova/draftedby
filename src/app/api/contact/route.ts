@@ -5,9 +5,23 @@ type ContactPayload = {
   name?: unknown;
   email?: unknown;
   message?: unknown;
+  website?: unknown;
 };
 
 const SUCCESS_MESSAGE = "Thanks. We received your message and will reply by email soon.";
+
+const rateLimit = new Map<string, number[]>();
+const RATE_LIMIT_WINDOW = 60_000;
+const RATE_LIMIT_MAX = 3;
+
+function isRateLimited(ip: string) {
+  const now = Date.now();
+  const timestamps = (rateLimit.get(ip) ?? []).filter((t) => now - t < RATE_LIMIT_WINDOW);
+  if (timestamps.length >= RATE_LIMIT_MAX) return true;
+  timestamps.push(now);
+  rateLimit.set(ip, timestamps);
+  return false;
+}
 
 function asTrimmedString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
@@ -27,12 +41,23 @@ function escapeHtml(value: string) {
 }
 
 export async function POST(request: Request) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
+  }
+
   let body: ContactPayload;
 
   try {
     body = (await request.json()) as ContactPayload;
   } catch {
     return NextResponse.json({ error: "Invalid JSON payload." }, { status: 400 });
+  }
+
+  // Honeypot: bots fill this hidden field
+  if (asTrimmedString(body.website)) {
+    return NextResponse.json({ message: SUCCESS_MESSAGE });
   }
 
   const name = asTrimmedString(body.name);

@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   COMPANY_NAME,
   CONTACT_EMAIL,
-  COPYRIGHT_YEAR,
   footerNavigation,
   products,
 } from "@/lib/site";
@@ -62,18 +61,27 @@ export default function Footer() {
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-300">Products</p>
           <nav className="mt-4 flex flex-col gap-3" aria-label="Footer products">
-            {products.map((product) => (
-              <a
-                key={product.href}
-                href={product.href}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label={`Visit ${product.name}`}
-                className="text-sm text-stone-100 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-              >
-                {product.name}
-              </a>
-            ))}
+            {products.map((product) =>
+              product.comingSoon ? (
+                <span
+                  key={product.slug}
+                  className="text-sm text-stone-400"
+                >
+                  {product.name} <span className="text-xs text-stone-500">(coming soon)</span>
+                </span>
+              ) : (
+                <a
+                  key={product.slug}
+                  href={product.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={`Visit ${product.name}`}
+                  className="text-sm text-stone-100 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >
+                  {product.name}
+                </a>
+              )
+            )}
           </nav>
         </div>
       </div>
@@ -81,7 +89,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 text-xs text-stone-300 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>
-            Copyright {COPYRIGHT_YEAR} {COMPANY_NAME}
+            Copyright {new Date().getFullYear()} {COMPANY_NAME}
           </p>
           <p>Corporate website for the parent company behind localized SaaS products.</p>
         </div>

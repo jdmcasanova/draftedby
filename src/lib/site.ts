@@ -2,7 +2,7 @@ export const COMPANY_NAME = "Drafted By";
 export const FOUNDER_NAME = "JD Michael Casanova";
 export const SITE_URL = "https://draftedby.com";
 export const CONTACT_EMAIL = "contact@draftedby.com";
-export const COPYRIGHT_YEAR = 2026;
+export const COPYRIGHT_YEAR = new Date().getFullYear();
 export const DEFAULT_TITLE = "Drafted By — AI Tools for Education";
 export const DEFAULT_DESCRIPTION =
   "Drafted By builds AI-powered tools that help teachers plan lessons in minutes. Present in France, UK, US, and Poland.";
@@ -22,6 +22,7 @@ export type Product = {
   shortDescription: string;
   description: string;
   flags: Array<"fr" | "gb" | "us" | "pl">;
+  comingSoon?: boolean;
   features: string[];
 };
 
@@ -63,6 +64,7 @@ export const products: Product[] = [
     description:
       "Draft My Lesson brings the platform to English-speaking teachers with copy and workflows written for those classrooms first.",
     flags: ["gb", "us"],
+    comingSoon: true,
     features: [
       "Lesson plans and classroom materials in English.",
       "Fast generation for weekly prep and one-off lessons.",
@@ -81,6 +83,7 @@ export const products: Product[] = [
     description:
       "Przygotuj Lekcje localizes the same core product for Polish teachers and schools, keeping the experience practical and easy to trust.",
     flags: ["pl"],
+    comingSoon: true,
     features: [
       "Polish lesson plans generated in minutes.",
       "Printable teaching materials and exercises.",
@@ -141,8 +144,5 @@ export const values = [
 ] as const;
 
 export const alternateLinks = [
-  { hrefLang: "en", href: "https://draftmylesson.com" },
-  { hrefLang: "fr", href: "https://preparemescours.fr" },
-  { hrefLang: "pl", href: "https://przygotujlekcje.pl" },
   { hrefLang: "x-default", href: SITE_URL },
 ] as const;

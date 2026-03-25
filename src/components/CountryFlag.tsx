@@ -34,7 +34,12 @@ function FlagShell({
       {...props}
     >
       {!decorative ? <title>{title ?? label}</title> : null}
-      {children}
+      <clipPath id={`clip-${label.replace(/\s/g, "")}`}>
+        <rect width="32" height="24" rx="2" />
+      </clipPath>
+      <g clipPath={`url(#clip-${label.replace(/\s/g, "")})`}>
+        {children}
+      </g>
     </svg>
   );
 }
@@ -42,9 +47,9 @@ function FlagShell({
 function FranceFlag(props: CountryFlagProps) {
   return (
     <FlagShell {...props} label={LABELS.fr}>
-      <rect width="10.666" height="24" fill="#1A4FA3" />
-      <rect x="10.666" width="10.668" height="24" fill="#FFFFFF" />
-      <rect x="21.334" width="10.666" height="24" fill="#D64B3A" />
+      <rect width="32" height="24" fill="#FFFFFF" />
+      <rect width="10.666" height="24" fill="#0055A4" />
+      <rect x="21.334" width="10.666" height="24" fill="#EF4135" />
     </FlagShell>
   );
 }
@@ -53,7 +58,7 @@ function PolandFlag(props: CountryFlagProps) {
   return (
     <FlagShell {...props} label={LABELS.pl}>
       <rect width="32" height="12" fill="#FFFFFF" />
-      <rect y="12" width="32" height="12" fill="#D63634" />
+      <rect y="12" width="32" height="12" fill="#DC143C" />
     </FlagShell>
   );
 }
@@ -61,26 +66,25 @@ function PolandFlag(props: CountryFlagProps) {
 function UnitedStatesFlag(props: CountryFlagProps) {
   return (
     <FlagShell {...props} label={LABELS.us}>
-      <rect width="32" height="24" rx="3" fill="#FFFFFF" />
-      {Array.from({ length: 7 }).map((_, index) => (
-        <rect
-          key={`stripe-${index}`}
-          y={index * 3.4286}
-          width="32"
-          height="1.7143"
-          fill="#CF4436"
-        />
-      ))}
-      <rect width="14.5" height="12.2" fill="#1F4E8C" />
-      {Array.from({ length: 12 }).map((_, index) => (
-        <circle
-          key={`star-${index}`}
-          cx={2.2 + (index % 6) * 2.2}
-          cy={1.8 + Math.floor(index / 6) * 2.1}
-          r="0.28"
-          fill="#FFFFFF"
-        />
-      ))}
+      <rect width="32" height="24" fill="#FFFFFF" />
+      {Array.from({ length: 13 }).map((_, i) =>
+        i % 2 === 0 ? (
+          <rect key={`s-${i}`} y={i * (24 / 13)} width="32" height={24 / 13} fill="#B22234" />
+        ) : null
+      )}
+      <rect width="12.8" height={24 * (7 / 13)} fill="#3C3B6E" />
+      {/* Simplified 5x4 + 4x3 star grid */}
+      {[0, 1, 2, 3, 4].map((row) =>
+        (row % 2 === 0 ? [0, 1, 2, 3, 4, 5] : [0, 1, 2, 3, 4]).map((col) => (
+          <circle
+            key={`st-${row}-${col}`}
+            cx={row % 2 === 0 ? 1.1 + col * 2.12 : 2.16 + col * 2.12}
+            cy={1.3 + row * 2.15}
+            r="0.55"
+            fill="#FFFFFF"
+          />
+        ))
+      )}
     </FlagShell>
   );
 }
@@ -88,13 +92,16 @@ function UnitedStatesFlag(props: CountryFlagProps) {
 function UnitedKingdomFlag(props: CountryFlagProps) {
   return (
     <FlagShell {...props} label={LABELS.gb}>
-      <rect width="32" height="24" rx="3" fill="#1A3A7A" />
-      <path d="M0 4.2 4.2 0 16 8.2 27.8 0 32 4.2 20.2 12 32 19.8 27.8 24 16 15.8 4.2 24 0 19.8 11.8 12 0 4.2Z" fill="#FFFFFF" opacity="0.95" />
-      <path d="M0 6.4 6.4 0 16 6.8 25.6 0 32 6.4 22.8 12 32 17.6 25.6 24 16 17.2 6.4 24 0 17.6 9.2 12 0 6.4Z" fill="#D6453A" />
-      <path d="M13 0h6v24h-6z" fill="#FFFFFF" />
-      <path d="M0 9h32v6H0z" fill="#FFFFFF" />
-      <path d="M14.2 0h3.6v24h-3.6z" fill="#D6453A" />
-      <path d="M0 10.2h32v3.6H0z" fill="#D6453A" />
+      {/* Blue field */}
+      <rect width="32" height="24" fill="#012169" />
+      {/* White saltire */}
+      <path d="M0 0 L32 24 M32 0 L0 24" stroke="#FFFFFF" strokeWidth="4.8" />
+      {/* Red saltire */}
+      <path d="M0 0 L32 24 M32 0 L0 24" stroke="#C8102E" strokeWidth="2.4" />
+      {/* White saltire offsets for counterchanging */}
+      <path d="M16 0 V24 M0 12 H32" stroke="#FFFFFF" strokeWidth="6.4" />
+      {/* Red cross */}
+      <path d="M16 0 V24 M0 12 H32" stroke="#C8102E" strokeWidth="3.6" />
     </FlagShell>
   );
 }

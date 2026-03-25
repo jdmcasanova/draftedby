@@ -100,6 +100,7 @@ export default function Home() {
                   href={product.href}
                   flags={product.flags}
                   market={product.marketLabel}
+                  comingSoon={product.comingSoon}
                   ctaLabel="Visit site"
                 />
               </ScrollReveal>
