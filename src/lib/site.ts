@@ -82,7 +82,6 @@ export const products: Product[] = [
     description:
       "Przygotuj Lekcje localizes the same core product for Polish teachers and schools, keeping the experience practical and easy to trust.",
     flags: ["pl"],
-    comingSoon: true,
     features: [
       "Polish lesson plans generated in minutes.",
       "Printable teaching materials and exercises.",
