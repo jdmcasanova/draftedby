@@ -50,6 +50,17 @@ export default function AboutPage() {
                 Drafted By to prove that focused, carefully localized tools
                 can outperform generic platforms.
               </p>
+              <a
+                href="https://jdmcasanova.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-terracotta-500 transition-colors hover:text-terracotta-600"
+              >
+                jdmcasanova.com
+                <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
