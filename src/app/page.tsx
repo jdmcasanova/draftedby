@@ -20,19 +20,19 @@ export default function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.65fr]">
             {/* Left column */}
             <div>
-              <p className="label-caps mb-4">Practical software, built with care</p>
+              <p className="label-caps mb-4">AI-powered software</p>
 
               <Reveal animation="clip-reveal">
                 <h1 className="heading-xl max-w-[16ch]">
-                  We build tools that make expert work easier.
+                  We build tools that give teachers their evenings back.
                 </h1>
               </Reveal>
 
               <Reveal animation="blur-in" delay={100}>
                 <p className="body-lg mt-6 max-w-[48ch]">
-                  Drafted By builds focused software that removes repetitive
-                  work without flattening expertise. We started in education
-                  and are expanding into new categories.
+                  Drafted By builds AI lesson-planning products adapted for
+                  each market we serve. Teachers get their prep done faster
+                  without losing control over what they teach.
                 </p>
               </Reveal>
 
