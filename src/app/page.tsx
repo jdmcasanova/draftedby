@@ -24,7 +24,7 @@ export default function HomePage() {
 
               <Reveal animation="clip-reveal">
                 <h1 className="heading-xl max-w-[16ch]">
-                  We build tools that give teachers their evenings back.
+                  We build tools that handle the busywork, so you don't have to.
                 </h1>
               </Reveal>
 
