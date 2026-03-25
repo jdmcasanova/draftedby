@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#FAF9F6"/>
+  <circle cx="240" cy="122" r="180" fill="#F5E6E0"/>
+  <circle cx="1034" cy="530" r="220" fill="#E8F0EC"/>
+  <circle cx="956" cy="140" r="116" fill="#F5E6E0" fill-opacity="0.8"/>
+  <rect x="80" y="112" width="1040" height="406" rx="32" fill="white" fill-opacity="0.8" stroke="#E7E5E4"/>
+  <rect x="700" y="208" width="272" height="160" rx="24" fill="#F5F4F0"/>
+  <rect x="728" y="238" width="132" height="12" rx="6" fill="#C4553A"/>
+  <rect x="728" y="272" width="216" height="12" rx="6" fill="#D6D3D1"/>
+  <rect x="728" y="304" width="182" height="12" rx="6" fill="#D6D3D1"/>
+  <rect x="728" y="336" width="148" height="12" rx="6" fill="#D6D3D1"/>
+  <circle cx="222" cy="315" r="88" fill="#2D4A3E"/>
+  <path d="M207.143 257.714H243.857C261.386 257.714 274.857 270.857 274.857 288.114C274.857 305.371 261.386 318.571 243.857 318.571H224.714V372H207.143V257.714ZM224.714 302.571H242.286C249.657 302.571 257.286 297.543 257.286 288.114C257.286 278.686 249.657 273.714 242.286 273.714H224.714V302.571Z" fill="#FAF9F6"/>
+  <text x="340" y="262" fill="#2D4A3E" font-family="Georgia, serif" font-size="36" font-weight="400">drafted by</text>
+  <text x="586" y="262" fill="#C4553A" font-family="Georgia, serif" font-size="36" font-weight="600">.</text>
+  <text x="340" y="340" fill="#1C1917" font-family="Georgia, serif" font-size="70" font-weight="400">AI tools for education</text>
+  <text x="340" y="394" fill="#57534E" font-family="Arial, sans-serif" font-size="28">We build software that gives teachers their evenings back.</text>
+  <text x="340" y="444" fill="#57534E" font-family="Arial, sans-serif" font-size="24">France · English-speaking markets · Poland</text>
+</svg>
