@@ -1,5 +1,7 @@
 import CountryFlag from "@/components/CountryFlag";
+import BrowserMockup from "@/components/BrowserMockup";
 import { cn } from "@/lib/utils";
+import type { ProductSlug } from "@/lib/site";
 
 type CountryCode = "fr" | "gb" | "us" | "pl";
 
@@ -7,6 +9,7 @@ type ProductCardProps = {
   title: string;
   description: string;
   href: string;
+  slug?: ProductSlug;
   flags: CountryCode[];
   market?: string;
   targetMarket?: string;
@@ -25,10 +28,26 @@ function ArrowRight() {
   );
 }
 
+function VisitLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1.5 text-sm font-medium text-terracotta-500 transition-colors hover:text-terracotta-600"
+      aria-label={`${label} in a new tab`}
+    >
+      {label}
+      <ArrowRight />
+    </a>
+  );
+}
+
 export default function ProductCard({
   title,
   description,
   href,
+  slug,
   flags,
   market,
   targetMarket,
@@ -38,20 +57,11 @@ export default function ProductCard({
   variant = "compact",
   className = "",
 }: ProductCardProps) {
-  const isFeature = variant === "feature";
-
-  return (
-    <article
-      className={cn(
-        "group rounded-2xl border transition-all duration-300",
-        isFeature
-          ? "border-stone-200/80 bg-white p-6 shadow-soft hover:shadow-elevated md:p-8"
-          : "h-full border-stone-200/60 bg-white p-5 shadow-soft hover:shadow-card",
-        className
-      )}
-    >
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div className="min-w-0 flex-1 space-y-3">
+  if (variant === "feature") {
+    return (
+      <article className={cn("grid items-center gap-8 md:grid-cols-2 md:gap-12", className)}>
+        {/* Text side */}
+        <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             {market ? (
               <span className="badge bg-forest-50 text-forest-600">{market}</span>
@@ -62,12 +72,7 @@ export default function ProductCard({
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <h3 className={cn(
-              "font-display tracking-[-0.025em] text-charcoal",
-              isFeature
-                ? "text-2xl font-[320] md:text-3xl"
-                : "text-xl font-[340]"
-            )}>
+            <h3 className="heading-accent text-2xl tracking-[-0.025em] text-charcoal">
               {title}
             </h3>
             <div className="flex items-center gap-1">
@@ -81,10 +86,7 @@ export default function ProductCard({
             </div>
           </div>
 
-          <p className={cn(
-            "body-base max-w-2xl",
-            isFeature && "text-base"
-          )}>
+          <p className="body-base max-w-2xl text-base">
             {description}
           </p>
 
@@ -93,34 +95,80 @@ export default function ProductCard({
               {targetMarket}
             </p>
           ) : null}
+
+          {features.length > 0 ? (
+            <ul className="grid gap-2.5 pt-2 sm:grid-cols-2">
+              {features.map((feature) => (
+                <li key={feature} className="flex gap-2.5 text-sm leading-6 text-stone-500">
+                  <span className="mt-[0.55rem] h-1 w-1 shrink-0 rounded-full bg-terracotta-400" aria-hidden="true" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          <div className="pt-2">
+            {comingSoon ? (
+              <span className="badge bg-stone-100 text-stone-400">Coming soon</span>
+            ) : (
+              <VisitLink href={href} label={ctaLabel} />
+            )}
+          </div>
         </div>
 
-        {comingSoon ? null : (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-stone-200 bg-linen px-3.5 py-2 text-sm font-medium text-charcoal transition-all hover:border-terracotta-300 hover:bg-terracotta-50 hover:text-terracotta-600"
-            aria-label={`${ctaLabel} in a new tab`}
-          >
-            {ctaLabel}
-            <ArrowRight />
-          </a>
-        )}
-      </div>
+        {/* Mockup side */}
+        <div className={cn(comingSoon && "opacity-50")}>
+          {slug ? <BrowserMockup productSlug={slug} /> : null}
+        </div>
+      </article>
+    );
+  }
 
-      {isFeature && features.length > 0 ? (
-        <div className="mt-6 border-t border-stone-100 pt-6">
-          <ul className="grid gap-2.5 sm:grid-cols-2">
-            {features.map((feature) => (
-              <li key={feature} className="flex gap-2.5 text-sm leading-6 text-stone-500">
-                <span className="mt-[0.55rem] h-1 w-1 shrink-0 rounded-full bg-terracotta-400" aria-hidden="true" />
-                <span>{feature}</span>
-              </li>
+  // Compact variant
+  return (
+    <article
+      className={cn(
+        "rounded-xl border-l-[3px] border-l-terracotta-300 bg-cream p-5 shadow-card",
+        className
+      )}
+    >
+      <div className="space-y-3">
+        <div className="flex flex-wrap items-center gap-2">
+          {market ? (
+            <span className="badge bg-forest-50 text-forest-600">{market}</span>
+          ) : null}
+          {comingSoon ? (
+            <span className="badge bg-stone-100 text-stone-400">Coming soon</span>
+          ) : null}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <h3 className="heading-md text-xl tracking-[-0.025em] text-charcoal">
+            {title}
+          </h3>
+          <div className="flex items-center gap-1">
+            {flags.map((code) => (
+              <CountryFlag
+                key={`${title}-${code}`}
+                code={code}
+                className="h-3.5 w-5 rounded-[3px] shadow-soft"
+              />
             ))}
-          </ul>
+          </div>
         </div>
-      ) : null}
+
+        <p className="body-base">
+          {description}
+        </p>
+
+        <div>
+          {comingSoon ? (
+            <span className="badge bg-stone-100 text-stone-400">Coming soon</span>
+          ) : (
+            <VisitLink href={href} label={ctaLabel} />
+          )}
+        </div>
+      </div>
     </article>
   );
 }

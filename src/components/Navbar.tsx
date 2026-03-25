@@ -32,14 +32,14 @@ export default function Navbar() {
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-stone-200/60 bg-linen/85 shadow-soft backdrop-blur-2xl"
+          ? "border-b border-stone-200/60 bg-cream/90 shadow-soft backdrop-blur-2xl"
           : "bg-transparent"
       )}
     >
       <div className="section-shell flex h-16 items-center justify-between lg:h-[4.25rem]">
         <Link
           href="/"
-          className="group flex items-baseline gap-0.5 font-display text-xl font-[340] tracking-[-0.04em] text-charcoal"
+          className="group flex items-baseline gap-0.5 font-display text-xl tracking-[-0.04em] text-charcoal"
           aria-label="Drafted By home"
         >
           drafted by
@@ -56,7 +56,7 @@ export default function Navbar() {
                 className={cn(
                   "rounded-lg px-3.5 py-1.5 text-[0.8125rem] font-medium tracking-[-0.01em] transition-colors",
                   active
-                    ? "bg-charcoal text-white"
+                    ? "bg-terracotta-500 text-white"
                     : "text-stone-500 hover:text-charcoal"
                 )}
               >
@@ -68,19 +68,19 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="relative z-50 flex h-9 w-9 items-center justify-center rounded-lg text-charcoal md:hidden"
+          className="relative z-50 flex h-9 w-9 items-center justify-center rounded-lg md:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
         >
           <div className="flex w-4 flex-col gap-[5px]">
             <span className={cn(
-              "block h-[1.5px] w-full bg-current transition-all duration-300 origin-center",
-              mobileOpen && "translate-y-[3.25px] rotate-45"
+              "block h-[1.5px] w-full transition-all duration-300 origin-center",
+              mobileOpen ? "translate-y-[3.25px] rotate-45 bg-cream" : "bg-charcoal"
             )} />
             <span className={cn(
-              "block h-[1.5px] w-full bg-current transition-all duration-300 origin-center",
-              mobileOpen && "-translate-y-[3.25px] -rotate-45"
+              "block h-[1.5px] w-full transition-all duration-300 origin-center",
+              mobileOpen ? "-translate-y-[3.25px] -rotate-45 bg-cream" : "bg-charcoal"
             )} />
           </div>
         </button>
@@ -89,7 +89,7 @@ export default function Navbar() {
       {/* Mobile overlay */}
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-linen transition-all duration-300 md:hidden",
+          "fixed inset-0 z-40 bg-forest-800 transition-all duration-300 md:hidden",
           mobileOpen
             ? "opacity-100 visible"
             : "opacity-0 invisible pointer-events-none"
@@ -103,8 +103,8 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "font-display text-[2.5rem] font-[320] tracking-[-0.03em] transition-all duration-500",
-                  active ? "text-terracotta-500" : "text-charcoal",
+                  "font-display text-[2.5rem] tracking-[-0.03em] transition-all duration-500",
+                  active ? "text-terracotta-300" : "text-cream",
                   mobileOpen
                     ? "translate-y-0 opacity-100"
                     : "translate-y-4 opacity-0"
@@ -118,7 +118,7 @@ export default function Navbar() {
           <Link
             href="/legal"
             className={cn(
-              "mt-6 font-mono text-xs uppercase tracking-widest text-stone-400 transition-all duration-500",
+              "mt-6 font-mono text-xs uppercase tracking-widest text-forest-400 transition-all duration-500",
               mobileOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             )}
             style={{ transitionDelay: mobileOpen ? "340ms" : "0ms" }}

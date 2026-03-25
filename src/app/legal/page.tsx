@@ -1,8 +1,9 @@
-import ScrollReveal from "@/components/ScrollReveal";
+import type { Metadata } from "next";
+import Reveal from "@/components/Reveal";
 import { createPageMetadata } from "@/lib/metadata";
 import { CONTACT_EMAIL, COMPANY_NAME } from "@/lib/site";
 
-export const metadata = createPageMetadata({
+export const metadata: Metadata = createPageMetadata({
   title: "Legal & Privacy",
   description:
     "Legal notice and privacy policy for Drafted By, a sole proprietorship hosted on Coolify.",
@@ -46,35 +47,46 @@ const sections = [
 
 export default function LegalPage() {
   return (
-    <main id="main-content" className="flex-1 pb-20 pt-28 md:pb-28 md:pt-36">
-      <div className="section-shell max-w-3xl">
-        <ScrollReveal>
+    <>
+      {/* ── HEADER ── */}
+      <section className="pt-32 pb-10 md:pt-44 md:pb-14">
+        <div className="section-shell max-w-3xl">
           <p className="label-caps">Legal</p>
-          <h1 className="heading-lg mt-5">Legal notice & privacy policy</h1>
-          <p className="body-base mt-4 text-stone-400">
-            The essentials of how {COMPANY_NAME} operates this site and handles personal data.
+          <Reveal animation="fade-up">
+            <h1 className="heading-lg mt-4">Legal notice & privacy policy</h1>
+          </Reveal>
+          <p className="mt-4 text-stone-400">
+            The essentials of how {COMPANY_NAME} operates this site and handles
+            personal data.
           </p>
-        </ScrollReveal>
+        </div>
+      </section>
 
-        <div className="mt-14 space-y-10">
+      {/* ── SECTIONS ── */}
+      <section className="pb-20 md:pb-28">
+        <div className="section-shell max-w-3xl space-y-10">
           {sections.map((section, i) => (
-            <ScrollReveal key={section.title} delay={i * 50}>
-              <section>
-                <h2 className="font-display text-xl font-[380] tracking-[-0.02em] text-charcoal">
-                  {section.title}
-                </h2>
-                <div className="mt-3 space-y-3">
-                  {section.body.map((paragraph) => (
-                    <p key={paragraph} className="text-[0.9375rem] leading-[1.85] text-stone-500">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </section>
-            </ScrollReveal>
+            <div key={section.title}>
+              {i > 0 && (
+                <hr className="mb-10 h-px border-none bg-terracotta-100" />
+              )}
+              <h2 className="heading-accent text-xl text-charcoal">
+                {section.title}
+              </h2>
+              <div className="mt-3 space-y-3">
+                {section.body.map((paragraph) => (
+                  <p
+                    key={paragraph}
+                    className="text-[0.9375rem] leading-[1.85] text-stone-500"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
-      </div>
-    </main>
+      </section>
+    </>
   );
 }

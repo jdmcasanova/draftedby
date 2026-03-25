@@ -14,20 +14,20 @@ const siteLinks = [
 
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t border-stone-200/60 bg-cream">
+    <footer className="grain-strong relative mt-auto bg-forest-800">
       <div className="section-shell grid gap-10 py-14 lg:grid-cols-[1.6fr_1fr_1fr_1fr] lg:gap-8">
         <div className="max-w-xs">
-          <p className="font-display text-lg font-[340] tracking-[-0.03em] text-charcoal">
+          <p className="font-display text-lg tracking-[-0.03em] text-cream">
             drafted by<span className="text-terracotta-500">.</span>
           </p>
-          <p className="mt-3 text-sm leading-6 text-stone-400">
+          <p className="mt-3 text-sm leading-6 text-forest-300">
             Localized AI lesson-planning products built to save teachers time
             without replacing their judgment.
           </p>
         </div>
 
         <div>
-          <p className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.14em] text-stone-400">
+          <p className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-forest-400">
             Company
           </p>
           <nav className="mt-3 flex flex-col gap-2" aria-label="Footer company">
@@ -35,7 +35,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-stone-500 transition-colors hover:text-charcoal"
+                className="text-sm text-forest-200 transition-colors hover:text-white"
               >
                 {link.label}
               </Link>
@@ -44,7 +44,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-stone-500 transition-colors hover:text-charcoal"
+                className="text-sm text-forest-200 transition-colors hover:text-white"
               >
                 {link.label}
               </Link>
@@ -53,13 +53,13 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.14em] text-stone-400">
+          <p className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-forest-400">
             Products
           </p>
           <nav className="mt-3 flex flex-col gap-2" aria-label="Footer products">
             {products.map((product) =>
               product.comingSoon ? (
-                <span key={product.slug} className="text-sm text-stone-300">
+                <span key={product.slug} className="text-sm text-forest-400">
                   {product.name}
                 </span>
               ) : (
@@ -68,7 +68,7 @@ export default function Footer() {
                   href={product.href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="text-sm text-stone-500 transition-colors hover:text-charcoal"
+                  className="text-sm text-forest-200 transition-colors hover:text-white"
                 >
                   {product.name}
                 </a>
@@ -78,20 +78,20 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.14em] text-stone-400">
+          <p className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-forest-400">
             Contact
           </p>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="mt-3 block text-sm text-stone-500 transition-colors hover:text-charcoal"
+            className="mt-3 block text-sm text-forest-200 transition-colors hover:text-white"
           >
             {CONTACT_EMAIL}
           </a>
         </div>
       </div>
 
-      <div className="section-shell border-t border-stone-200/60 py-5">
-        <p className="text-xs text-stone-400">
+      <div className="section-shell border-t border-forest-700 py-5">
+        <p className="text-xs text-forest-400">
           {new Date().getFullYear()} {COMPANY_NAME}
         </p>
       </div>
