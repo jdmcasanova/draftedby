@@ -22,10 +22,10 @@ export default function AboutPage() {
             </h1>
           </Reveal>
           <p className="body-lg mx-auto mt-6 max-w-2xl">
-            Drafted By was founded by JD Michael Casanova, a former Apple
-            and Meta product manager with a deep interest in education, chess
-            teaching, and practical AI. The company builds focused software
-            that removes repetitive work without flattening expertise.
+            Drafted By builds focused software that handles the busywork
+            professionals deal with every day. We started with education
+            and we are expanding into new categories where the same
+            approach applies.
           </p>
         </div>
       </section>
@@ -45,10 +45,9 @@ export default function AboutPage() {
             <div className="relative z-10 max-w-xl">
               <h2 className="heading-md">JD Michael Casanova</h2>
               <p className="mt-4 text-[0.9375rem] leading-[1.85] text-stone-500">
-                Former Apple and Meta product manager with a deep interest in
-                education, chess teaching, and practical AI. He founded
-                Drafted By to prove that focused, carefully localized tools
-                can outperform generic platforms.
+                Former Apple and Meta product manager. Founded Drafted By
+                to build practical software that respects how professionals
+                actually work.
               </p>
               <a
                 href="https://jdmcasanova.com/"
@@ -72,26 +71,29 @@ export default function AboutPage() {
           <p className="label-caps mb-6">Company story</p>
 
           <p className="text-[0.9375rem] leading-[1.9] text-stone-500">
-            The company started with a simple question: if teachers spend so
-            much of their week planning, rewriting, and adapting materials, what
-            would helpful AI look like if it were built around that reality
-            instead of a generic productivity demo?
+            Most software tries to do everything for everyone. The result
+            is tools that feel generic and get in the way. Drafted By
+            takes the opposite approach: one problem at a time, one market
+            at a time, done properly.
           </p>
 
           <hr className="my-6 h-px border-none bg-terracotta-100" />
 
           <p className="text-[0.9375rem] leading-[1.9] text-stone-500">
-            The answer became a suite of localized products. Rather than forcing
-            one global interface everywhere, Drafted By adapts the same core
-            engine for each market it serves.
+            The first products focus on education because the need was
+            obvious. Teachers everywhere spend hours on repetitive planning
+            work that AI can handle in minutes. But the playbook is the
+            same for any field: understand the workflow, build something
+            useful, and localize it for each market.
           </p>
 
           <hr className="my-6 h-px border-none bg-terracotta-100" />
 
           <p className="text-[0.9375rem] leading-[1.9] text-stone-500">
-            The long-term ambition is bigger than education, but the standard
-            stays the same: useful software should reduce friction, respect
-            expertise, and feel grounded in how people actually work.
+            The company is structured to grow into new categories over
+            time. The standard stays the same: reduce friction, respect
+            expertise, ship software that feels like it was built by
+            someone who understands the job.
           </p>
         </div>
       </section>
