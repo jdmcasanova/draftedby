@@ -3,9 +3,9 @@ export const FOUNDER_NAME = "JD Michael Casanova";
 export const SITE_URL = "https://draftedby.com";
 export const CONTACT_EMAIL = "contact@draftedby.com";
 export const COPYRIGHT_YEAR = new Date().getFullYear();
-export const DEFAULT_TITLE = "Drafted By — AI Tools for Education";
+export const DEFAULT_TITLE = "Drafted By — Focused Software for Expert Work";
 export const DEFAULT_DESCRIPTION =
-  "Drafted By builds AI-powered tools that help teachers plan lessons in minutes. Present in France, UK, US, and Poland.";
+  "Drafted By builds practical software that removes repetitive work without flattening expertise. Starting with AI-powered lesson planning across France, the UK, US, and Poland.";
 export const OPEN_GRAPH_IMAGE = `${SITE_URL}/opengraph-image.png`;
 
 export type ProductSlug =
@@ -92,7 +92,7 @@ export const products: Product[] = [
 ];
 
 export const stats = [
-  { label: "Countries", value: "3" },
+  { label: "Countries", value: "7" },
   { label: "Teachers", value: "500+" },
   { label: "Lessons generated", value: "10,000+" },
 ] as const;

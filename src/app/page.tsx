@@ -20,19 +20,19 @@ export default function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.65fr]">
             {/* Left column */}
             <div>
-              <p className="label-caps mb-4">AI-powered lesson planning</p>
+              <p className="label-caps mb-4">Practical software, built with care</p>
 
               <Reveal animation="clip-reveal">
                 <h1 className="heading-xl max-w-[16ch]">
-                  We build tools that give teachers their evenings back.
+                  We build tools that make expert work easier.
                 </h1>
               </Reveal>
 
               <Reveal animation="blur-in" delay={100}>
                 <p className="body-lg mt-6 max-w-[48ch]">
-                  Drafted By creates AI lesson-planning products adapted for
-                  teachers in France, the English-speaking world, and Poland.
-                  One philosophy, three local experiences.
+                  Drafted By builds focused software that removes repetitive
+                  work without flattening expertise. We started in education
+                  and are expanding into new categories.
                 </p>
               </Reveal>
 
@@ -46,16 +46,22 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right column — browser mockup */}
+            {/* Right column — stacked mockups */}
             <div className="relative hidden lg:block">
               <div
                 className="dot-grid absolute inset-0 -m-6 rounded-2xl opacity-40"
                 aria-hidden="true"
               />
-              <BrowserMockup
-                productSlug="prepare-mes-cours"
-                className="relative rotate-2"
-              />
+              <div className="relative">
+                <BrowserMockup
+                  productSlug="prepare-mes-cours"
+                  className="relative rotate-2"
+                />
+                <BrowserMockup
+                  productSlug="draft-my-lesson"
+                  className="absolute -bottom-8 -left-10 w-[70%] -rotate-3 opacity-80"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -73,11 +79,11 @@ export default function HomePage() {
         <div className="section-shell">
           <p className="label-caps mb-3">Products</p>
           <h2 className="heading-lg">
-            One core product, adapted market by market.
+            Focused tools, localized carefully.
           </h2>
           <p className="mt-4 max-w-xl text-stone-400">
-            Each version is built for its local classroom — language, curriculum
-            expectations, and teacher workflows included.
+            Each product is shaped for the people it serves — their language,
+            workflows, and expectations.
           </p>
 
           <Reveal animation="scale-in" className="mt-10">
@@ -110,16 +116,16 @@ export default function HomePage() {
             <div>
               <p className="label-caps !text-terracotta-300">Our mission</p>
               <h2 className="heading-lg mt-3 !text-white">
-                Teachers deserve tools that respect their time and expertise.
+                Software should remove friction, not flatten expertise.
               </h2>
             </div>
 
             <div className="flex flex-col justify-center">
               <p className="text-forest-200 leading-relaxed">
-                We started Drafted By because lesson planning should not take
-                all evening. Our products use AI to handle the busy work so
-                teachers can focus on what matters — their students, their craft,
-                and their own well-being.
+                We build practical tools that handle the repetitive parts of
+                expert work. Our first products help teachers plan lessons
+                faster. Over time, we will bring the same approach to other
+                fields where careful software can make a real difference.
               </p>
               <Link
                 href="/about"
