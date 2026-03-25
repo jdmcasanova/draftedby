@@ -23,7 +23,7 @@ export default function AboutPage() {
           </Reveal>
           <p className="body-lg mx-auto mt-6 max-w-2xl">
             Drafted By was founded by JD Michael Casanova, a former Apple
-            and Meta engineer with a deep interest in education, chess
+            and Meta product manager with a deep interest in education, chess
             teaching, and practical AI. The company builds focused software
             that removes repetitive work without flattening expertise.
           </p>
@@ -45,7 +45,7 @@ export default function AboutPage() {
             <div className="relative z-10 max-w-xl">
               <h2 className="heading-md">JD Michael Casanova</h2>
               <p className="mt-4 text-[0.9375rem] leading-[1.85] text-stone-500">
-                Former Apple and Meta engineer with a deep interest in
+                Former Apple and Meta product manager with a deep interest in
                 education, chess teaching, and practical AI. He founded
                 Drafted By to prove that focused, carefully localized tools
                 can outperform generic platforms.
