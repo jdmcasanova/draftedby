@@ -91,7 +91,7 @@ export default function HomePage() {
               {products.map((product, i) => (
                 <div
                   key={product.slug}
-                  className={i === 2 ? "lg:mt-6" : undefined}
+                  className={i === 1 ? "lg:mt-8" : i === 2 ? "lg:mt-16" : undefined}
                 >
                   <ProductCard
                     variant="compact"
