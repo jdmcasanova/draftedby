@@ -10,7 +10,7 @@ type StatBarProps = {
 
 export default function StatBar({ items, className = "" }: StatBarProps) {
   return (
-    <dl className={`grid grid-cols-3 gap-8 md:gap-12 ${className}`}>
+    <dl className={`flex flex-col gap-6 sm:flex-row sm:gap-12 ${className}`}>
       {items.map((item) => (
         <div key={item.label}>
           <dd
