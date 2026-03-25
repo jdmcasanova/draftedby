@@ -84,7 +84,7 @@ a {
   font-weight: 300;
   font-variation-settings: "opsz" 72;
   letter-spacing: -0.035em;
-  line-height: 0.92;
+  line-height: 1.05;
   color: var(--color-charcoal);
 }
 
@@ -265,8 +265,8 @@ a {
 /* ── Animations ──────────────────────────────────────────── */
 
 @keyframes clip-reveal {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0 0 0); }
+  from { clip-path: inset(-5% 100% -5% 0); }
+  to   { clip-path: inset(-5% -5% -5% 0); }
 }
 
 @keyframes scale-in {

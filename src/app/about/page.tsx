@@ -45,7 +45,7 @@ export default function AboutPage() {
             <div className="relative z-10 max-w-xl">
               <h2 className="heading-md">JD Michael Casanova</h2>
               <p className="mt-4 text-[0.9375rem] leading-[1.85] text-stone-500">
-                Former Apple and Meta product manager. Founded Drafted By
+                Former Apple and Meta project manager. Founded Drafted By
                 to build practical software that respects how professionals
                 actually work.
               </p>
