@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import { createPageMetadata } from "@/lib/metadata";
@@ -12,22 +13,25 @@ export const metadata = createPageMetadata({
 
 export default function ProductsPage() {
   return (
-    <main id="main-content" className="flex-1 pb-20 pt-24 md:pb-24 md:pt-32">
+    <main id="main-content" className="flex-1 pb-20 pt-28 md:pb-28 md:pt-36">
       <div className="section-shell">
         <ScrollReveal>
-          <p className="section-kicker">Products</p>
-          <h1 className="section-heading mt-5 max-w-4xl">
-            Three local products, one shared product philosophy.
+          <p className="label-caps">Products</p>
+          <h1 className="heading-xl mt-5 max-w-[22ch]">
+            Three local products, one shared philosophy.
           </h1>
-          <p className="section-copy mt-6">
-            Each product runs on the same core planning engine, then gets adapted for the language,
-            tone, and classroom expectations of the teachers it serves.
+        </ScrollReveal>
+
+        <ScrollReveal delay={80}>
+          <p className="body-lg mt-8">
+            Each product runs on the same core planning engine, then gets adapted
+            for the language, tone, and classroom expectations of the teachers it serves.
           </p>
         </ScrollReveal>
 
-        <div className="mt-12 grid gap-6">
-          {products.map((product, index) => (
-            <ScrollReveal key={product.slug} delay={index * 90}>
+        <div className="mt-14 grid gap-5">
+          {products.map((product, i) => (
+            <ScrollReveal key={product.slug} delay={i * 80}>
               <ProductCard
                 title={product.name}
                 description={product.description}
@@ -44,21 +48,18 @@ export default function ProductsPage() {
           ))}
         </div>
 
-        <section className="mt-12">
-          <ScrollReveal>
-            <div className="overflow-hidden rounded-[1.75rem] bg-forest-700 px-6 py-10 text-white shadow-card md:px-10 md:py-12">
-              <p className="section-kicker !text-terracotta-300">Looking Ahead</p>
-              <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3rem)] font-light tracking-[-0.04em] text-white">
-                More products coming soon.
-              </h2>
-              <p className="mt-5 max-w-3xl text-base leading-8 text-stone-200">
-                Drafted By is intentionally focused today, but the company is structured to support
-                future SaaS products beyond education wherever careful product design can reduce
-                repetitive work and make expert workflows calmer.
-              </p>
+        <ScrollReveal>
+          <div className="mt-16 text-center">
+            <p className="text-sm text-stone-400">
+              Looking for something else?
+            </p>
+            <div className="mt-4">
+              <Link href="/contact" className="btn-ghost">
+                Talk to us
+              </Link>
             </div>
-          </ScrollReveal>
-        </section>
+          </div>
+        </ScrollReveal>
       </div>
     </main>
   );

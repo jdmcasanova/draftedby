@@ -5,7 +5,6 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { organizationJsonLd, rootMetadata, websiteJsonLd } from "@/lib/metadata";
-import { alternateLinks } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const fraunces = Fraunces({
@@ -62,21 +61,18 @@ export default function RootLayout({
     >
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#C4553A" />
-        {alternateLinks.map((link) => (
-          <link key={link.hrefLang} rel="alternate" hrefLang={link.hrefLang} href={link.href} />
-        ))}
+        <meta name="theme-color" content="#faf9f6" />
         {jsonLdScript(organizationJsonLd)}
         {jsonLdScript(websiteJsonLd)}
       </head>
-      <body className="min-h-screen bg-linen font-body text-stone-600 antialiased">
+      <body className="min-h-screen antialiased">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-cream focus:px-4 focus:py-2 focus:text-charcoal focus:shadow-card focus:outline-none focus:ring-2 focus:ring-terracotta-500"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-charcoal focus:shadow-elevated focus:outline-none focus:ring-2 focus:ring-terracotta-500"
         >
           Skip to main content
         </a>
-        <div className="relative flex min-h-screen flex-col overflow-x-clip">
+        <div className="relative flex min-h-screen flex-col">
           <Navbar />
           {children}
           <Footer />

@@ -10,15 +10,18 @@ type StatBarProps = {
 
 export default function StatBar({ items, className = "" }: StatBarProps) {
   return (
-    <dl
-      className={`grid gap-3 rounded-2xl border border-stone-200 bg-white/70 p-4 shadow-card sm:grid-cols-3 ${className}`}
-    >
-      {items.map((item) => (
-        <div key={item.label} className="rounded-xl bg-cream px-4 py-4">
-          <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-stone-500">{item.label}</dt>
-          <dd className="mt-2 font-display text-2xl font-light tracking-[-0.03em] text-forest-700">
+    <dl className={`grid grid-cols-3 ${className}`}>
+      {items.map((item, i) => (
+        <div
+          key={item.label}
+          className={`py-2 ${i > 0 ? "border-l border-stone-200 pl-6 md:pl-10" : ""}`}
+        >
+          <dd className="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-[280] leading-none tracking-[-0.04em] text-charcoal">
             {item.value}
           </dd>
+          <dt className="mt-2 font-mono text-[0.625rem] font-medium uppercase tracking-[0.14em] text-stone-400 md:text-xs">
+            {item.label}
+          </dt>
         </div>
       ))}
     </dl>

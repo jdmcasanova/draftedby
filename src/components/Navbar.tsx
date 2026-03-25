@@ -6,22 +6,6 @@ import { usePathname } from "next/navigation";
 import { primaryNavigation } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-function MenuIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-      <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function CloseIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-      <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
-
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -32,54 +16,48 @@ export default function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    const syncScrolled = () => {
-      setScrolled(window.scrollY > 8);
-    };
-
-    syncScrolled();
-    window.addEventListener("scroll", syncScrolled, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", syncScrolled);
-    };
+    const sync = () => setScrolled(window.scrollY > 8);
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    return () => window.removeEventListener("scroll", sync);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
   return (
     <header
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-stone-200/80 bg-linen/82 shadow-[0_12px_36px_rgba(28,25,23,0.06)] backdrop-blur-xl"
+          ? "border-b border-stone-200/60 bg-linen/85 shadow-soft backdrop-blur-2xl"
           : "bg-transparent"
       )}
     >
-      <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="section-shell flex h-16 items-center justify-between lg:h-[4.25rem]">
         <Link
           href="/"
-          className="flex items-center gap-1 rounded-md font-display text-[1.45rem] font-[340] tracking-[-0.04em] text-forest-700 transition-colors hover:text-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta-500"
+          className="group flex items-baseline gap-0.5 font-display text-xl font-[340] tracking-[-0.04em] text-charcoal"
           aria-label="Drafted By home"
         >
-          <span>drafted by</span>
-          <span
-            className="inline-flex h-2.5 w-2.5 rounded-full bg-terracotta-500 shadow-[0_0_0_5px_rgba(196,85,58,0.1)]"
-            aria-hidden="true"
-          />
+          drafted by
+          <span className="inline-block h-[0.4rem] w-[0.4rem] rounded-full bg-terracotta-500 transition-transform group-hover:scale-125" aria-hidden="true" />
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-0.5 md:flex" aria-label="Primary">
           {primaryNavigation.map((link) => {
             const active = pathname === link.href;
-
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                aria-label={`Go to ${link.label}`}
                 className={cn(
-                  "rounded-lg px-4 py-2 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta-500",
+                  "rounded-lg px-3.5 py-1.5 text-[0.8125rem] font-medium tracking-[-0.01em] transition-colors",
                   active
-                    ? "bg-terracotta-100 text-terracotta-600"
-                    : "text-stone-600 hover:bg-white/75 hover:text-charcoal"
+                    ? "bg-charcoal text-white"
+                    : "text-stone-500 hover:text-charcoal"
                 )}
               >
                 {link.label}
@@ -90,43 +68,63 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-lg border border-stone-200 bg-white/70 p-2 text-charcoal transition-colors hover:bg-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta-500 md:hidden"
-          aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+          className="relative z-50 flex h-9 w-9 items-center justify-center rounded-lg text-charcoal md:hidden"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
-          aria-controls="mobile-navigation"
-          onClick={() => setMobileOpen((value) => !value)}
+          onClick={() => setMobileOpen((v) => !v)}
         >
-          {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+          <div className="flex w-4 flex-col gap-[5px]">
+            <span className={cn(
+              "block h-[1.5px] w-full bg-current transition-all duration-300 origin-center",
+              mobileOpen && "translate-y-[3.25px] rotate-45"
+            )} />
+            <span className={cn(
+              "block h-[1.5px] w-full bg-current transition-all duration-300 origin-center",
+              mobileOpen && "-translate-y-[3.25px] -rotate-45"
+            )} />
+          </div>
         </button>
       </div>
 
+      {/* Mobile overlay */}
       <div
-        id="mobile-navigation"
         className={cn(
-          "border-t border-stone-200/80 bg-linen/95 px-4 pb-4 pt-2 backdrop-blur-xl md:hidden",
-          mobileOpen ? "block" : "hidden"
+          "fixed inset-0 z-40 bg-linen transition-all duration-300 md:hidden",
+          mobileOpen
+            ? "opacity-100 visible"
+            : "opacity-0 invisible pointer-events-none"
         )}
       >
-        <nav className="flex flex-col gap-1" aria-label="Mobile">
-          {primaryNavigation.map((link) => {
+        <nav className="flex h-full flex-col items-start justify-center gap-2 px-8" aria-label="Mobile">
+          {primaryNavigation.map((link, i) => {
             const active = pathname === link.href;
-
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                aria-label={`Go to ${link.label}`}
                 className={cn(
-                  "rounded-lg px-4 py-3 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta-500",
-                  active
-                    ? "bg-terracotta-100 text-terracotta-600"
-                    : "text-stone-600 hover:bg-cream hover:text-charcoal"
+                  "font-display text-[2.5rem] font-[320] tracking-[-0.03em] transition-all duration-500",
+                  active ? "text-terracotta-500" : "text-charcoal",
+                  mobileOpen
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-4 opacity-0"
                 )}
+                style={{ transitionDelay: mobileOpen ? `${100 + i * 60}ms` : "0ms" }}
               >
                 {link.label}
               </Link>
             );
           })}
+          <Link
+            href="/legal"
+            className={cn(
+              "mt-6 font-mono text-xs uppercase tracking-widest text-stone-400 transition-all duration-500",
+              mobileOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            )}
+            style={{ transitionDelay: mobileOpen ? "340ms" : "0ms" }}
+          >
+            Legal
+          </Link>
         </nav>
       </div>
     </header>

@@ -46,26 +46,26 @@ const sections = [
 
 export default function LegalPage() {
   return (
-    <main id="main-content" className="flex-1 pb-20 pt-24 md:pb-24 md:pt-32">
-      <div className="section-shell">
+    <main id="main-content" className="flex-1 pb-20 pt-28 md:pb-28 md:pt-36">
+      <div className="section-shell max-w-3xl">
         <ScrollReveal>
-          <p className="section-kicker">Legal</p>
-          <h1 className="section-heading mt-5 max-w-4xl">Legal notice and privacy policy.</h1>
-          <p className="section-copy mt-6">
+          <p className="label-caps">Legal</p>
+          <h1 className="heading-lg mt-5">Legal notice & privacy policy</h1>
+          <p className="body-base mt-4 text-stone-400">
             The essentials of how {COMPANY_NAME} operates this site and handles personal data.
           </p>
         </ScrollReveal>
 
-        <div className="mt-12 grid gap-5">
-          {sections.map((section, index) => (
-            <ScrollReveal key={section.title} delay={index * 70}>
-              <section className="card border border-stone-200 bg-white/80">
-                <h2 className="font-display text-2xl font-light tracking-[-0.03em] text-forest-700">
+        <div className="mt-14 space-y-10">
+          {sections.map((section, i) => (
+            <ScrollReveal key={section.title} delay={i * 50}>
+              <section>
+                <h2 className="font-display text-xl font-[380] tracking-[-0.02em] text-charcoal">
                   {section.title}
                 </h2>
-                <div className="mt-4 space-y-4">
+                <div className="mt-3 space-y-3">
                   {section.body.map((paragraph) => (
-                    <p key={paragraph} className="text-base leading-8 text-stone-600">
+                    <p key={paragraph} className="text-[0.9375rem] leading-[1.85] text-stone-500">
                       {paragraph}
                     </p>
                   ))}

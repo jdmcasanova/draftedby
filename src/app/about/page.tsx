@@ -11,102 +11,111 @@ export const metadata = createPageMetadata({
 
 export default function AboutPage() {
   return (
-    <main id="main-content" className="flex-1 pb-20 pt-24 md:pb-24 md:pt-32">
+    <main id="main-content" className="flex-1 pb-20 pt-28 md:pb-28 md:pt-36">
       <div className="section-shell">
+        {/* Header */}
         <ScrollReveal>
-          <p className="section-kicker">About</p>
-          <h1 className="section-heading mt-5 max-w-4xl">
-            A parent company built to keep useful products focused.
+          <p className="label-caps">About</p>
+          <h1 className="heading-xl mt-5 max-w-[20ch]">
+            A company built to keep useful products focused.
           </h1>
-          <p className="section-copy mt-6">
-            Drafted By was founded by JD Michael Casanova, a former WhatsApp employee with a deep
-            interest in education, chess teaching, and practical AI. The company exists to support
-            focused products that help teachers prepare faster without making the work feel generic
-            or detached from the classroom.
+        </ScrollReveal>
+
+        <ScrollReveal delay={80}>
+          <p className="body-lg mt-8">
+            Drafted By was founded by JD Michael Casanova, a former WhatsApp employee
+            with a deep interest in education, chess teaching, and practical AI. The
+            company exists to support focused products that help teachers prepare faster
+            without making the work feel generic.
           </p>
         </ScrollReveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        {/* Two-column story */}
+        <div className="mt-20 grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
           <ScrollReveal>
-            <article className="card border border-stone-200 bg-white/80">
-              <p className="section-kicker">Company Story</p>
-              <div className="mt-5 space-y-5 text-base leading-8 text-stone-600">
+            <div>
+              <p className="label-caps">Company story</p>
+              <div className="mt-6 space-y-6 text-[0.9375rem] leading-[1.85] text-stone-500">
                 <p>
-                  The company started with a simple question: if teachers spend so much of their
-                  week planning, rewriting, and adapting materials, what would helpful AI look like
-                  if it were built around that reality instead of around a generic productivity
-                  demo?
+                  The company started with a simple question: if teachers spend so much
+                  of their week planning, rewriting, and adapting materials, what would
+                  helpful AI look like if it were built around that reality instead of a
+                  generic productivity demo?
                 </p>
                 <p>
-                  The answer became a suite of localized products. Rather than forcing one global
-                  interface everywhere, Drafted By adapts the same core lesson-planning engine for
+                  The answer became a suite of localized products. Rather than forcing one
+                  global interface everywhere, Drafted By adapts the same core engine for
                   each market it serves.
                 </p>
                 <p>
-                  The long-term ambition is bigger than education, but the standard stays the same:
-                  useful software should reduce friction, respect expertise, and feel grounded in
-                  how people actually work.
+                  The long-term ambition is bigger than education, but the standard stays
+                  the same: useful software should reduce friction, respect expertise, and
+                  feel grounded in how people actually work.
                 </p>
               </div>
-            </article>
+            </div>
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <aside className="card border border-stone-200 bg-cream/90">
-              <p className="section-kicker">Founder</p>
-              <h2 className="mt-4 font-display text-3xl font-light tracking-[-0.04em] text-charcoal">
+            <div className="rounded-2xl border border-stone-200/60 bg-white p-6 shadow-soft lg:mt-10">
+              <p className="label-caps">Founder</p>
+              <h2 className="heading-md mt-4">
                 JD Michael Casanova
               </h2>
-              <p className="mt-5 text-base leading-8 text-stone-600">
-                Former tech employee, including time at WhatsApp, with an ongoing interest in
-                education, chess teaching, and how AI can be made genuinely useful for expert work.
+              <p className="mt-4 text-[0.9375rem] leading-[1.85] text-stone-500">
+                Former tech employee, including time at WhatsApp, with an ongoing
+                interest in education, chess teaching, and how AI can be made genuinely
+                useful for expert work.
               </p>
-            </aside>
+            </div>
           </ScrollReveal>
         </div>
 
-        <section className="mt-16">
+        {/* Timeline */}
+        <section className="mt-24">
           <ScrollReveal>
-            <p className="section-kicker">Timeline</p>
-            <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.25rem)] font-light tracking-[-0.04em] text-charcoal">
-              A short, deliberate rollout.
-            </h2>
+            <hr className="rule mb-10" />
+            <p className="label-caps">Timeline</p>
+            <h2 className="heading-lg mt-4">A short, deliberate rollout.</h2>
           </ScrollReveal>
 
-          <div className="mt-8 grid gap-5">
-            {timeline.map((item, index) => (
-              <ScrollReveal key={item.title} delay={index * 80}>
-                <article className="card border border-stone-200 bg-white/80">
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta-600">
+          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-stone-200/60 bg-stone-200/60 md:grid-cols-3">
+            {timeline.map((item, i) => (
+              <ScrollReveal key={item.title} delay={i * 80}>
+                <div className="flex h-full flex-col bg-white p-6">
+                  <span className="font-mono text-2xl font-medium tracking-[-0.02em] text-terracotta-500">
                     {item.year}
-                  </p>
-                  <h3 className="mt-3 font-display text-2xl font-light tracking-[-0.03em] text-charcoal">
+                  </span>
+                  <h3 className="mt-3 font-display text-lg font-[360] tracking-[-0.02em] text-charcoal">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-base leading-8 text-stone-600">{item.description}</p>
-                </article>
+                  <p className="mt-3 text-sm leading-7 text-stone-400">
+                    {item.description}
+                  </p>
+                </div>
               </ScrollReveal>
             ))}
           </div>
         </section>
 
-        <section className="mt-16">
+        {/* Values */}
+        <section className="mt-24">
           <ScrollReveal>
-            <p className="section-kicker">Values</p>
-            <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.25rem)] font-light tracking-[-0.04em] text-charcoal">
-              Principles that keep the work honest.
-            </h2>
+            <p className="label-caps">Values</p>
+            <h2 className="heading-lg mt-4">Principles that shape the work.</h2>
           </ScrollReveal>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {values.map((value, index) => (
-              <ScrollReveal key={value.title} delay={index * 70}>
-                <article className="card border border-stone-200 bg-cream/90">
-                  <h3 className="font-display text-2xl font-light tracking-[-0.03em] text-forest-700">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {values.map((value, i) => (
+              <ScrollReveal key={value.title} delay={i * 60}>
+                <div className="rounded-2xl border border-stone-200/60 bg-white p-5 shadow-soft">
+                  <h3 className="font-display text-lg font-[380] tracking-[-0.02em] text-forest-700">
                     {value.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-7 text-stone-600">{value.description}</p>
-                </article>
+                  <p className="mt-3 text-sm leading-7 text-stone-400">
+                    {value.description}
+                  </p>
+                </div>
               </ScrollReveal>
             ))}
           </div>

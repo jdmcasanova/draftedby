@@ -14,33 +14,28 @@ const siteLinks = [
 
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-forest-700 text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr] lg:px-8">
-        <div className="max-w-sm">
-          <p className="font-display text-2xl font-[340] tracking-[-0.04em]">
-            drafted by<span className="text-terracotta-300">.</span>
+    <footer className="mt-auto border-t border-stone-200/60 bg-cream">
+      <div className="section-shell grid gap-10 py-14 lg:grid-cols-[1.6fr_1fr_1fr_1fr] lg:gap-8">
+        <div className="max-w-xs">
+          <p className="font-display text-lg font-[340] tracking-[-0.03em] text-charcoal">
+            drafted by<span className="text-terracotta-500">.</span>
           </p>
-          <p className="mt-4 text-sm leading-6 text-stone-200">
-            {COMPANY_NAME} is the parent company behind localized AI lesson-planning products built
-            to save teachers time without taking judgment away from the classroom.
+          <p className="mt-3 text-sm leading-6 text-stone-400">
+            Localized AI lesson-planning products built to save teachers time
+            without replacing their judgment.
           </p>
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="mt-4 inline-flex text-sm text-stone-100 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-          >
-            {CONTACT_EMAIL}
-          </a>
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-300">Company</p>
-          <nav className="mt-4 flex flex-col gap-3" aria-label="Footer company">
+          <p className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.14em] text-stone-400">
+            Company
+          </p>
+          <nav className="mt-3 flex flex-col gap-2" aria-label="Footer company">
             {siteLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                aria-label={`Go to ${link.label}`}
-                className="text-sm text-stone-100 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="text-sm text-stone-500 transition-colors hover:text-charcoal"
               >
                 {link.label}
               </Link>
@@ -49,8 +44,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                aria-label={`Go to ${link.label}`}
-                className="text-sm text-stone-100 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="text-sm text-stone-500 transition-colors hover:text-charcoal"
               >
                 {link.label}
               </Link>
@@ -59,15 +53,14 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-300">Products</p>
-          <nav className="mt-4 flex flex-col gap-3" aria-label="Footer products">
+          <p className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.14em] text-stone-400">
+            Products
+          </p>
+          <nav className="mt-3 flex flex-col gap-2" aria-label="Footer products">
             {products.map((product) =>
               product.comingSoon ? (
-                <span
-                  key={product.slug}
-                  className="text-sm text-stone-400"
-                >
-                  {product.name} <span className="text-xs text-stone-500">(coming soon)</span>
+                <span key={product.slug} className="text-sm text-stone-300">
+                  {product.name}
                 </span>
               ) : (
                 <a
@@ -75,8 +68,7 @@ export default function Footer() {
                   href={product.href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  aria-label={`Visit ${product.name}`}
-                  className="text-sm text-stone-100 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  className="text-sm text-stone-500 transition-colors hover:text-charcoal"
                 >
                   {product.name}
                 </a>
@@ -84,15 +76,24 @@ export default function Footer() {
             )}
           </nav>
         </div>
+
+        <div>
+          <p className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.14em] text-stone-400">
+            Contact
+          </p>
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="mt-3 block text-sm text-stone-500 transition-colors hover:text-charcoal"
+          >
+            {CONTACT_EMAIL}
+          </a>
+        </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 text-xs text-stone-300 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p>
-            Copyright {new Date().getFullYear()} {COMPANY_NAME}
-          </p>
-          <p>Corporate website for the parent company behind localized SaaS products.</p>
-        </div>
+      <div className="section-shell border-t border-stone-200/60 py-5">
+        <p className="text-xs text-stone-400">
+          {new Date().getFullYear()} {COMPANY_NAME}
+        </p>
       </div>
     </footer>
   );
