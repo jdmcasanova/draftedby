@@ -90,10 +90,18 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="section-shell border-t border-forest-700 py-5">
+      <div className="section-shell border-t border-forest-700 py-5 flex flex-col items-center gap-3">
         <p className="text-xs text-forest-400">
           {new Date().getFullYear()} {COMPANY_NAME}
         </p>
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-forest-500">
+          <span>Our products:</span>
+          <a href="https://preparemescours.fr" rel="noopener noreferrer" className="text-forest-400 hover:text-white transition-colors">Prépare Mes Cours (FR)</a>
+          <span className="text-forest-600">·</span>
+          <a href="https://draftmylesson.com" rel="noopener noreferrer" className="text-forest-400 hover:text-white transition-colors">Draft My Lesson (EN)</a>
+          <span className="text-forest-600">·</span>
+          <a href="https://przygotujlekcje.pl" rel="noopener noreferrer" className="text-forest-400 hover:text-white transition-colors">przygotuj lekcje. (PL)</a>
+        </div>
       </div>
     </footer>
   );
